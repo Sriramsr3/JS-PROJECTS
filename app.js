@@ -12,9 +12,15 @@ let getItem=()=>{
     let sno=0;
     itemList.forEach(function(value,index){
         sno +=1;
-        emptystr +="<tr><td>"+sno+"</td><td>"+value+"<?td><td>Remove</td></tr>";
+        emptystr +="<tr><td>"+sno+"</td><td>"+value+"<?td><td><button onclick=deleteItem("+index+")>Remove</td></tr>";
     })
     document.getElementById('tbl').innerHTML=emptystr;
     
 }
+
+function deleteItem(id){
+    itemList.splice(id,1);
+    getItem();
+}
+
 document.getElementById('btn').addEventListener('click',addItem);
